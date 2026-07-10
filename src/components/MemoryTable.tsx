@@ -6,6 +6,7 @@ import { SecretModal } from "./SecretModal";
 
 type MemoryTableProps = {
   isActive: boolean;
+  isGlowing: boolean;
   tableRef: (node: HTMLElement | null) => void;
 };
 
@@ -19,7 +20,7 @@ const tableVariants: Variants = {
   },
 };
 
-export function MemoryTable({ isActive, tableRef }: MemoryTableProps) {
+export function MemoryTable({ isActive, isGlowing, tableRef }: MemoryTableProps) {
   const shouldReduceMotion = Boolean(useReducedMotion());
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [secretOpen, setSecretOpen] = useState(false);
@@ -46,7 +47,7 @@ export function MemoryTable({ isActive, tableRef }: MemoryTableProps) {
 
   return (
     <section
-      className="memory-table"
+      className={`memory-table ${isGlowing ? "album-glow" : ""}`}
       ref={tableRef}
       aria-labelledby="memory-table-title"
       onPointerMove={handlePointerMove}

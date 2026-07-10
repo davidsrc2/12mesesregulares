@@ -1003,6 +1003,540 @@ img {
   color: var(--paper);
 }
 
+.memory-table.album-glow .polaroid-face {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.94) inset,
+    0 0 0 1px rgba(255, 250, 243, 0.18),
+    0 0 34px rgba(255, 224, 157, 0.46),
+    var(--shadow-lifted);
+}
+
+.memory-table.album-glow .photo-window img {
+  filter: saturate(1.06) contrast(1.04) brightness(1.08);
+}
+
+.memory-table.album-glow .warm-string-lights i {
+  animation: memoryLightWake 1.2s ease-in-out infinite;
+}
+
+.surprise-final {
+  position: relative;
+  width: min(100%, 980px);
+  min-height: 760px;
+  margin: 3.2rem auto 0;
+  padding: 3.2rem 1rem 0;
+  color: var(--brown);
+  text-align: center;
+  isolation: isolate;
+}
+
+.surprise-final::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  z-index: -1;
+  width: min(76vw, 620px);
+  height: min(76vw, 620px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 236, 184, 0.36), transparent 60%),
+    radial-gradient(circle, rgba(201, 143, 151, 0.16), transparent 66%);
+  filter: blur(18px);
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 1200ms ease;
+  pointer-events: none;
+}
+
+.surprise-final.is-destination-visible::before {
+  opacity: 1;
+}
+
+.surprise-polaroid-wrap {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+.surprise-polaroid-wrap::after {
+  content: "";
+  width: 190px;
+  height: 24px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: rgba(77, 53, 45, 0.22);
+  filter: blur(12px);
+  opacity: 0.65;
+  transform: rotate(-2deg);
+}
+
+.surprise-polaroid {
+  position: relative;
+  width: 210px;
+  aspect-ratio: 0.68;
+  border: 0;
+  padding: 0;
+  color: var(--brown);
+  background: transparent;
+  cursor: pointer;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.surprise-polaroid:disabled {
+  cursor: default;
+}
+
+.surprise-polaroid::before {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 14px;
+  background: radial-gradient(circle, rgba(255, 242, 204, 0.34), transparent 68%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+}
+
+.surprise-polaroid:hover::before,
+.surprise-polaroid:focus-visible::before {
+  opacity: 1;
+}
+
+.surprise-polaroid-flipper {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-style: preserve-3d;
+}
+
+.surprise-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--paper);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 0 0 1px rgba(77, 53, 45, 0.06),
+    0 22px 52px rgba(77, 53, 45, 0.2);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.surprise-card-back {
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.2rem;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 243, 0.98), rgba(231, 211, 189, 0.78)),
+    var(--paper);
+}
+
+.surprise-card-back::after,
+.surprise-card-front::after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px dashed rgba(143, 74, 85, 0.2);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.last-heart {
+  position: relative;
+  z-index: 4;
+  font-size: 2.35rem;
+  line-height: 1;
+  filter: drop-shadow(0 8px 12px rgba(143, 74, 85, 0.16));
+}
+
+.last-memory-text {
+  position: relative;
+  z-index: 4;
+  color: var(--wine);
+  font-family: "Caveat", cursive;
+  font-size: 1.58rem;
+  line-height: 1;
+}
+
+.touch-me {
+  position: relative;
+  z-index: 4;
+  margin-top: 0.18rem;
+  color: rgba(77, 53, 45, 0.62);
+  font-family: "Caveat", cursive;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.surprise-card-front {
+  transform: rotateY(180deg);
+}
+
+.surprise-photo-window {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  margin: 12px 12px 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 2px;
+  background:
+    radial-gradient(circle at 60% 22%, rgba(255, 239, 183, 0.5), transparent 28%),
+    linear-gradient(180deg, #6f5860 0%, #b88d88 56%, #e7d3bd 100%);
+  box-shadow: inset 0 0 0 1px rgba(77, 53, 45, 0.08);
+}
+
+.castle-illustration {
+  width: 96%;
+  height: 96%;
+  overflow: visible;
+  filter: drop-shadow(0 18px 20px rgba(77, 53, 45, 0.18));
+}
+
+.surprise-caption {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  min-height: 74px;
+  align-content: center;
+  color: var(--brown);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.surprise-story {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 720px);
+  margin: 2.4rem auto 0;
+}
+
+.surprise-typewriter {
+  display: grid;
+  gap: 0.35rem;
+  min-height: 7.4rem;
+  align-content: center;
+  color: rgba(77, 53, 45, 0.9);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.surprise-typewriter p {
+  margin: 0;
+}
+
+.typewriter-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.8em;
+  margin-left: 0.08em;
+  background: var(--wine);
+  transform: translateY(0.08em);
+  animation: caretBlink 860ms steps(1) infinite;
+}
+
+.surprise-heart-and-envelope {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  margin-top: 1.3rem;
+}
+
+.surprise-heart {
+  font-size: 2.1rem;
+  filter: drop-shadow(0 12px 18px rgba(143, 74, 85, 0.18));
+}
+
+.reveal-envelope {
+  position: relative;
+  width: 168px;
+  height: 122px;
+  border: 0;
+  padding: 0;
+  color: var(--brown);
+  background: transparent;
+  cursor: pointer;
+  perspective: 900px;
+}
+
+.reveal-envelope-label {
+  position: absolute;
+  left: 50%;
+  top: -1.8rem;
+  color: var(--wine);
+  font-family: "Caveat", cursive;
+  font-size: 1.35rem;
+  transform: translateX(-50%);
+}
+
+.reveal-envelope-body {
+  position: absolute;
+  inset: 16px 0 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 243, 0.98), rgba(231, 211, 189, 0.88)),
+    var(--paper);
+  box-shadow:
+    inset 0 0 0 1px rgba(77, 53, 45, 0.08),
+    0 20px 42px rgba(77, 53, 45, 0.18);
+}
+
+.reveal-envelope-body::before,
+.reveal-envelope-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.reveal-envelope-body::before {
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, transparent 30%, rgba(143, 74, 85, 0.08));
+}
+
+.reveal-envelope-body::after {
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.44) 48%, transparent 66%);
+  transform: translateX(-120%);
+  animation: envelopeGleam 4.2s ease-in-out infinite;
+}
+
+.reveal-envelope-flap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  clip-path: polygon(0 0, 50% 62%, 100% 0);
+  background: linear-gradient(180deg, #fff8ef, #d8b99f);
+  transform-origin: top center;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wax-seal {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.2), transparent 28%),
+    linear-gradient(145deg, #a95763, var(--wine));
+  box-shadow: 0 7px 12px rgba(77, 53, 45, 0.18);
+  transform: translate(-50%, -50%);
+}
+
+.reveal-envelope-paper {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 28px;
+  height: 74px;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 14px, rgba(201, 143, 151, 0.1) 15px 16px),
+    var(--paper);
+  box-shadow: 0 10px 18px rgba(77, 53, 45, 0.1);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-envelope.is-open .reveal-envelope-flap {
+  transform: rotateX(176deg);
+}
+
+.reveal-envelope.is-open .reveal-envelope-paper {
+  transform: translateY(-38px);
+}
+
+.reveal-envelope.is-open .wax-seal {
+  opacity: 0.74;
+}
+
+.reveal-letter {
+  width: min(100%, 560px);
+  margin: 2rem auto 0;
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 2rem 1.5rem;
+  color: var(--brown);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.52), transparent 38%),
+    repeating-linear-gradient(0deg, transparent 0 28px, rgba(201, 143, 151, 0.1) 29px 30px),
+    var(--paper);
+  box-shadow: 0 24px 56px rgba(77, 53, 45, 0.16);
+}
+
+.reveal-letter p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.reveal-letter p + p {
+  margin-top: 0.85rem;
+}
+
+.destination-reveal {
+  position: relative;
+  width: min(100%, 760px);
+  margin: 2.4rem auto 0;
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 2.6rem 1.4rem 2.2rem;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255, 236, 184, 0.42), transparent 34%),
+    linear-gradient(145deg, rgba(255, 250, 243, 0.96), rgba(231, 211, 189, 0.8));
+  box-shadow: 0 30px 80px rgba(77, 53, 45, 0.2);
+}
+
+.destination-reveal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.36) 46%, transparent 68%),
+    radial-gradient(circle at 50% 34%, rgba(255, 220, 137, 0.24), transparent 46%);
+  opacity: 0.74;
+  pointer-events: none;
+}
+
+.castle-emoji,
+.destination-kicker,
+.destination-reveal h2,
+.destination-date,
+.countdown-card,
+.countdown-button {
+  position: relative;
+  z-index: 2;
+}
+
+.castle-emoji {
+  display: block;
+  font-size: clamp(3.4rem, 11vw, 6.2rem);
+  line-height: 1;
+  filter: drop-shadow(0 16px 24px rgba(143, 74, 85, 0.18));
+}
+
+.destination-kicker {
+  margin: 1rem 0 0;
+  color: var(--wine);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.destination-reveal h2 {
+  margin: 0.35rem auto 0;
+  color: var(--brown);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.destination-reveal h2 span {
+  display: inline-block;
+  animation: destinationRise 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.destination-date {
+  margin: 0.7rem 0 0;
+  color: var(--wine);
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.75rem, 5vw, 2.7rem);
+  line-height: 1;
+}
+
+.countdown-card {
+  width: min(100%, 420px);
+  margin: 1.7rem auto 0;
+  border: 1px solid rgba(143, 74, 85, 0.16);
+  border-radius: 7px;
+  padding: 1.2rem;
+  background: rgba(255, 250, 243, 0.64);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+}
+
+.countdown-card p,
+.countdown-card span {
+  margin: 0;
+  color: rgba(77, 53, 45, 0.74);
+  font-size: 0.95rem;
+}
+
+.countdown-card strong {
+  display: block;
+  margin: 0.15rem 0;
+  color: var(--wine);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 8vw, 4.4rem);
+  line-height: 0.95;
+}
+
+.countdown-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 1.35rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.35rem;
+  color: var(--paper);
+  background: linear-gradient(135deg, var(--wine), #6e343f);
+  box-shadow: 0 14px 34px rgba(77, 53, 45, 0.24);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.countdown-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(77, 53, 45, 0.3);
+}
+
+.magic-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.magic-rain span {
+  position: absolute;
+  left: var(--sparkle-left);
+  top: -18px;
+  width: var(--sparkle-size);
+  height: var(--sparkle-size);
+  border-radius: 50%;
+  background: rgba(246, 211, 128, 0.9);
+  box-shadow: 0 0 14px rgba(246, 211, 128, 0.72);
+  opacity: 0;
+  animation: magicFall var(--sparkle-duration) var(--sparkle-delay) linear infinite;
+}
+
 @keyframes dustFloat {
   0% {
     opacity: 0;
@@ -1025,6 +1559,65 @@ img {
   }
   50% {
     transform: translateY(-2px);
+  }
+}
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes envelopeGleam {
+  0%,
+  62% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes destinationRise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes magicFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+  }
+  16%,
+  82% {
+    opacity: 0.82;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(18px, 460px, 0) rotate(160deg);
+  }
+}
+
+@keyframes memoryLightWake {
+  0%,
+  100% {
+    opacity: 0.48;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateY(-1px);
   }
 }
 
@@ -1105,6 +1698,24 @@ img {
   .secret-heart {
     left: 78%;
     top: 44%;
+  }
+
+  .surprise-final {
+    min-height: 700px;
+    margin-top: 2.4rem;
+    padding-top: 2.4rem;
+  }
+
+  .surprise-polaroid {
+    width: 190px;
+  }
+
+  .surprise-typewriter {
+    min-height: 6.6rem;
+  }
+
+  .destination-reveal {
+    padding: 2.35rem 1rem 2rem;
   }
 }
 
@@ -1191,6 +1802,66 @@ img {
 
   .modal-message {
     font-size: 1.65rem;
+  }
+
+  .surprise-final {
+    min-height: 650px;
+    padding: 2rem 0.2rem 0;
+  }
+
+  .surprise-polaroid {
+    width: 174px;
+  }
+
+  .last-memory-text {
+    font-size: 1.35rem;
+  }
+
+  .surprise-caption {
+    min-height: 66px;
+    font-size: 1.15rem;
+  }
+
+  .surprise-story {
+    margin-top: 1.8rem;
+  }
+
+  .surprise-typewriter {
+    min-height: 6rem;
+    font-size: clamp(1.55rem, 8vw, 2.4rem);
+  }
+
+  .reveal-envelope {
+    width: 148px;
+    height: 110px;
+  }
+
+  .reveal-letter {
+    margin-top: 1.5rem;
+    padding: 1.55rem 1rem;
+  }
+
+  .reveal-letter p {
+    font-size: 1.26rem;
+  }
+
+  .destination-reveal {
+    margin-top: 1.8rem;
+    padding: 2rem 0.85rem 1.8rem;
+  }
+
+  .destination-reveal h2 {
+    font-size: clamp(2.35rem, 15vw, 4.1rem);
+    line-height: 0.92;
+  }
+
+  .countdown-card {
+    padding: 1rem 0.85rem;
+  }
+
+  .countdown-button {
+    width: min(100%, 300px);
+    padding-inline: 1rem;
   }
 }
 

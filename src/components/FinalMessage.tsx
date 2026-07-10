@@ -1,8 +1,11 @@
+import { SurpriseFinal } from "./SurpriseFinal";
+
 type FinalMessageProps = {
   onReplay: () => void;
+  onStartCountdown: () => void;
 };
 
-export function FinalMessage({ onReplay }: FinalMessageProps) {
+export function FinalMessage({ onReplay, onStartCountdown }: FinalMessageProps) {
   return (
     <section className="final-message" aria-labelledby="final-message-title">
       <article className="final-letter">
@@ -17,6 +20,7 @@ export function FinalMessage({ onReplay }: FinalMessageProps) {
           Volver a ver nuestros recuerdos
         </button>
       </article>
+      <SurpriseFinal onStartCountdown={onStartCountdown} />
     </section>
   );
 }

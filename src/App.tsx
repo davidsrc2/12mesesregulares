@@ -9,8 +9,10 @@ function App() {
   const shouldReduceMotion = Boolean(useReducedMotion());
   const tableRef = useRef<HTMLElement | null>(null);
   const introTimerRef = useRef<number | null>(null);
+  const glowTimerRef = useRef<number | null>(null);
   const [introOpening, setIntroOpening] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+  const [albumGlow, setAlbumGlow] = useState(false);
 
   const openMemories = useCallback(() => {
     if (introOpening) {
@@ -31,6 +33,23 @@ function App() {
     });
   }, [shouldReduceMotion]);
 
+  const startCountdown = useCallback(() => {
+    setAlbumGlow(true);
+    tableRef.current?.scrollIntoView({
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+
+    if (glowTimerRef.current !== null) {
+      window.clearTimeout(glowTimerRef.current);
+    }
+
+    glowTimerRef.current = window.setTimeout(
+      () => setAlbumGlow(false),
+      shouldReduceMotion ? 600 : 4200,
+    );
+  }, [shouldReduceMotion]);
+
   const setTableRef = useCallback((node: HTMLElement | null) => {
     tableRef.current = node;
   }, []);
@@ -39,6 +58,10 @@ function App() {
     return () => {
       if (introTimerRef.current !== null) {
         window.clearTimeout(introTimerRef.current);
+      }
+
+      if (glowTimerRef.current !== null) {
+        window.clearTimeout(glowTimerRef.current);
       }
     };
   }, []);
@@ -60,8 +83,12 @@ function App() {
           ease: [0.22, 1, 0.36, 1],
         }}
       >
-        <MemoryTable isActive={introOpening} tableRef={setTableRef} />
-        <FinalMessage onReplay={replayMemories} />
+        <MemoryTable
+          isActive={introOpening}
+          isGlowing={albumGlow}
+          tableRef={setTableRef}
+        />
+        <FinalMessage onReplay={replayMemories} onStartCountdown={startCountdown} />
       </motion.div>
 
       <AnimatePresence>
